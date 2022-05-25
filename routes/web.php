@@ -17,9 +17,26 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/saludo', function () {
-    return 'Hola mi nombre Jose';
+$router->get('/saludo/{nombre}', function ($nombre) {
+    return 'Hola mi nombre '.$nombre;
 });
+
+$router->get('/edad/{edad}', function ($edad) {
+    if ($edad >= 18 && $edad <= 100){
+        echo 'Tu eres mayor de edad tienes: '.$edad;
+    }elseif ($edad < 18 && $edad > 0){
+        echo 'Tu eres menor de edad tienes: '.$edad;
+    }elseif ($edad >= 100){
+        echo 'Tu eres mayor de edad puede que estes muerto: '.$edad;
+    }else{
+        echo 'Tu no existes, eres un error tienes: '.$edad;
+    }
+});
+
+
+
+
+
 
 $router->post('/saludo', function () {
     return 'Se creo un dato';
